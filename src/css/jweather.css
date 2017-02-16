@@ -1,0 +1,210 @@
+/*************************************************************************************************/
+/* Global - Base                                         */
+/*************************************************************************************************/
+
+/* line 1706, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.weather-widget .pst-block-head .arr-ic-3 {
+  float: right; }
+
+/* line 1710, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.weather-widget .pst-block-main {
+  padding: 15px 20px 0;
+  margin-bottom: 0; }
+
+/* line 1715, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.weather-widget .title-4 i {
+  color: #fd3a13;
+  font-size: 14px;
+  line-height: 14px; }
+
+/* line 1723, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.weather-block {
+  color: #676666;
+  font-size: 12px;
+  min-height: 60px;
+  padding: 5px 0 5px 112px;
+  position: relative; }
+  /* line 1729, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+  .weather-block .temperature {
+    position: absolute;
+    left: 0; }
+  /* line 1733, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+  .weather-block i {
+    display: inline-block;
+    color: #fd3a13;
+    font-size: 26px;
+    margin-top: 5px;
+    vertical-align: top; }
+
+/* line 1742, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.day {
+  color: #8e8e8e;
+  font-size: 9px;
+  line-height: 8px;
+  text-align: right;
+  text-transform: uppercase; }
+
+/* line 1750, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.degrees-1 {
+  color: #000;
+  display: inline-block;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 40px; }
+
+/* line 1758, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.degrees-2 {
+  color: #000;
+  display: inline-block;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 26px; }
+  /* line 1764, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+  .degrees-2 i {
+    display: inline-block;
+    vertical-align: top;
+    margin: 2px 4px; }
+
+/* line 1771, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.degrees-ic-1 {
+  display: inline-block;
+  border: 2px solid #000;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px; }
+
+/* line 1779, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.degrees-ic-2 {
+  display: inline-block;
+  border: 1px solid #000;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px; }
+
+/* line 1787, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.weather-days {
+  margin: -12px 0 0; }
+
+/* line 1793, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+.weather-days-list li {
+  float: left;
+  width: 20%;
+  text-align: center; }
+  /* line 1799, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+  .weather-days-list li:hover a, .weather-days-list li.active a {
+    background: rgba(235, 235, 235, 0.11); }
+  /* line 1803, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+  .weather-days-list li a {
+    display: block;
+    padding: 22px 0 25px;
+    text-decoration: none; }
+  /* line 1808, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+  .weather-days-list li .degrees-2 {
+    margin-right: -13px; }
+  /* line 1811, D:/aartyomenko/Git/spectr/html/app/scss/_theme_style.scss */
+  .weather-days-list li .day {
+    text-align: center; }
+
+/*************************************************************************************************/
+/* Font mappings                                                                                 */
+/*************************************************************************************************/
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.eot?18056628');
+  src: url('../fonts/fontello.eot?18056628#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff?18056628') format('woff'),
+       url('../fonts/fontello.ttf?18056628') format('truetype'),
+       url('../fonts/fontello.svg?18056628#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?18056628#fontello') format('svg');
+  }
+}
+*/
+ 
+ [class^="weather-icon-"]:before, [class*=" weather-icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.weather-icon-windy-rain-inv:before { content: '\e800'; } /* '' */
+.weather-icon-snow-inv:before { content: '\e801'; } /* '' */
+.weather-icon-snow-heavy-inv:before { content: '\e802'; } /* '' */
+.weather-icon-hail-inv:before { content: '\e803'; } /* '' */
+.weather-icon-clouds-inv:before { content: '\e804'; } /* '' */
+.weather-icon-clouds-flash-inv:before { content: '\e805'; } /* '' */
+.weather-icon-temperature:before { content: '\e806'; } /* '' */
+.weather-icon-compass:before { content: '\e807'; } /* '' */
+.weather-icon-na:before { content: '\e808'; } /* '' */
+.weather-icon-fahrenheit:before { content: '\e809'; } /* '' */
+.weather-icon-clouds-flash-alt:before { content: '\e80a'; } /* '' */
+.weather-icon-sun-inv:before { content: '\e80b'; } /* '' */
+.weather-icon-moon-inv:before { content: '\e80c'; } /* '' */
+.weather-icon-cloud-sun-inv:before { content: '\e80d'; } /* '' */
+.weather-icon-cloud-moon-inv:before { content: '\e80e'; } /* '' */
+.weather-icon-cloud-inv:before { content: '\e80f'; } /* '' */
+.weather-icon-cloud-flash-inv:before { content: '\e810'; } /* '' */
+.weather-icon-drizzle-inv:before { content: '\e811'; } /* '' */
+.weather-icon-rain-inv:before { content: '\e812'; } /* '' */
+.weather-icon-windy-inv:before { content: '\e813'; } /* '' */
+.weather-icon-sunrise:before { content: '\e814'; } /* '' */
+.weather-icon-sun:before { content: '\e815'; } /* '' */
+.weather-icon-moon:before { content: '\e816'; } /* '' */
+.weather-icon-eclipse:before { content: '\e817'; } /* '' */
+.weather-icon-mist:before { content: '\e818'; } /* '' */
+.weather-icon-wind:before { content: '\e819'; } /* '' */
+.weather-icon-snowflake:before { content: '\e81a'; } /* '' */
+.weather-icon-cloud-sun:before { content: '\e81b'; } /* '' */
+.weather-icon-cloud-moon:before { content: '\e81c'; } /* '' */
+.weather-icon-fog-sun:before { content: '\e81d'; } /* '' */
+.weather-icon-fog-moon:before { content: '\e81e'; } /* '' */
+.weather-icon-fog-cloud:before { content: '\e81f'; } /* '' */
+.weather-icon-fog:before { content: '\e820'; } /* '' */
+.weather-icon-cloud:before { content: '\e821'; } /* '' */
+.weather-icon-cloud-flash:before { content: '\e822'; } /* '' */
+.weather-icon-cloud-flash-alt:before { content: '\e823'; } /* '' */
+.weather-icon-drizzle:before { content: '\e824'; } /* '' */
+.weather-icon-rain:before { content: '\e825'; } /* '' */
+.weather-icon-windy:before { content: '\e826'; } /* '' */
+.weather-icon-windy-rain:before { content: '\e827'; } /* '' */
+.weather-icon-snow:before { content: '\e828'; } /* '' */
+.weather-icon-snow-alt:before { content: '\e829'; } /* '' */
+.weather-icon-snow-heavy:before { content: '\e82a'; } /* '' */
+.weather-icon-hail:before { content: '\e82b'; } /* '' */
+.weather-icon-clouds:before { content: '\e82c'; } /* '' */
+.weather-icon-clouds-flash:before { content: '\e82d'; } /* '' */
