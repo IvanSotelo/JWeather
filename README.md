@@ -2,13 +2,17 @@
 ![JWeather.js version](https://img.shields.io/badge/Version-v1.0-brightgreen.svg)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![PayPal Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.me/IvanSotelo/10)
+
 A jQuery plugin used to display the current weather of any city using Yahoo-Weather. Visit www.deskode.com
 
 ## Getting started
 
 As you can see in the example files, you will need to include:
+
 	 - [jQuery library](http://jquery.com/). (1.6.0 minimum)
+
 	 - The JavaScript file `jweather.js` (or its minified version `jweather.min.js`)
+
 	 - The css file `jweather.css`
 
 ### Install using bower or npm
@@ -26,11 +30,11 @@ npm install jweather.js
 ### Including files:
 ```html
 <!-- include jweather.css and copy the font folder to one folder above your /css folder -->
-<link rel="stylesheet" type="text/css" href="jquery.jweather.css" />
+<link rel="stylesheet" type="text/css" href="jweather.css" />
 <!-- include a copy of jquery (if you haven't already) -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
 <!-- include jweather -->
-<script type="text/javascript" src="jquery.jweather.js"></script>
+<script type="text/javascript" src="jweather.js"></script>
 ```
 
 ### Required HTML structure
@@ -121,20 +125,7 @@ $(document).ready(function() {
 });
 ```
 
-### Forecast
-
-```javascript
-$(document).ready(function() {
-  var example5 = $("#example-5").jweather({
-    location: "New York, NY",
-    forecast: 3,
-  	view : "forecast",
-  	units : "imperial", //force imperial units
-  });
-});
-```
-
-### Forecast
+### Render False
 
 ```javascript
 $(document).ready(function() {
