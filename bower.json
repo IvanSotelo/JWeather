@@ -1,0 +1,23 @@
+{
+  "name": "jweather",
+  "version": "1.0.0",
+  "main": [
+    "./src/jweather.js",
+    "./src/css/jweather.css",
+    "./src/fonts/fontello.eot",
+    "./src/fonts/fontello.svg",
+    "./src/fonts/fontello.ttf",
+    "./src/fonts/fontello.woff",
+   ],
+  "ignore":
+  [
+    "README*",
+    "LICENSE*",
+    "_config.yml",
+    ".git*",
+    ".travis*",
+    ".demo*",
+    "*bower.json"
+  ],
+  "dependencies": { "jquery": "latest" }
+}
