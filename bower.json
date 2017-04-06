@@ -22,7 +22,7 @@
     "_config.yml",
     ".git*",
     "demo",
-    "bower.json"
+    "bower.json",
     "**/.*",
     "bower_components",
   ],
