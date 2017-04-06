@@ -9,11 +9,11 @@ A jQuery plugin used to display the current weather of any city using Yahoo-Weat
 
 As you can see in the example files, you will need to include:
 
-	 - [jQuery library](http://jquery.com/). (1.6.0 minimum)
+- [jQuery library](http://jquery.com/). (1.6.0 minimum)
 
-	 - The JavaScript file `jweather.js` (or its minified version `jweather.min.js`)
+- The JavaScript file `jweather.js` (or its minified version `jweather.min.js`)
 
-	 - The css file `jweather.css`
+- The css file `jweather.css`
 
 ### Install using bower or npm
 **Optionally**, you can install jweather.js with bower or npm if you prefer:
