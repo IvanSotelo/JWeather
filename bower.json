@@ -21,8 +21,10 @@
     "LICENSE*",
     "_config.yml",
     ".git*",
-    ".demo*",
-    "*bower.json"
+    "demo",
+    "bower.json"
+    "**/.*",
+    "bower_components",
   ],
   "repository": {
     "type": "git",
