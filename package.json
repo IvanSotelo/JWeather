@@ -1,6 +1,6 @@
 {
   "name": "jweather",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A jQuery plugin used to display the current weather of any city using Yahoo-Weather.",
   "main": "index.js",
   "scripts": {
