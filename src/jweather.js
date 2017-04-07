@@ -33,7 +33,7 @@
  */
 ;(function ( $, window, document, undefined ) {
 
-		
+
 		var pluginName = "jweather";
 
 		// Create the defaults once
@@ -59,15 +59,15 @@
 			// is generally empty as we don't want to alter the default options for
 			// future instances of the plugin
 			this.settings = $.extend( {}, defaults, options );
-			
+
 			//bound forecast to max of 5 days, api won't return more then that
-			this.settings.forecast = Math.min(this.settings.forecast, 5); 
-			
+			this.settings.forecast = Math.min(this.settings.forecast, 5);
+
 			//store plugin name for local reference
 			this._name = pluginName;
-			
+
 			this.once = false;
-			
+
 			//call initilizaiton
 			this.init();
 		};
@@ -80,7 +80,7 @@
 				if (this.settings.render) {
 
 					this.fetchWeather().then(this.render, this.error);
-					
+
 				}
 				this.once = true; //init has happened, can be used to prevent some init tasks happening again
 			},
@@ -98,18 +98,18 @@
 				//data params to send along with each ajax request
 				//array because some apis may require multiple requests
 				//params[0] is sent to apiurls[api][0] and so on
-				var params = []; 
+				var params = [];
 
 				//build location query string
 				var location = this.settings.location;
 
-				
+
 					//yahoo weather uses c and f for metric/imperial unit identifiers,
 					//convert our stored text string to match what they expect
 					var u = (this.settings.units == "metric")?"c":"f";
-					
+
 					//see yahoo yql weather api for details on params passed to api
-					var parameters = {}; 
+					var parameters = {};
 					parameters.q = "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + location + "') AND u='" + u +"'";
 					parameters.env = "store://datatables.org/alltableswithkeys"; //some sort of api version info... because yahoo.
 					parameters.format = "json";
@@ -126,8 +126,8 @@
 				//when all request promises are done
 				$.when.apply(this, requests)
 		    	.done(function(){
-		    		
-		    		//grab the result from the promise as passed by arguments 
+
+		    		//grab the result from the promise as passed by arguments
 		    		//and convert it to an actual array with slice
 		    		var args = Array.prototype.slice.call(arguments);
 
@@ -141,7 +141,7 @@
 					else {
 						args = args[0];
 					}
-				
+
 
  					if (args.query.count == 0 || args.query.results.channel.description == "Yahoo! Weather Error") {
 						//yahoo weather really should return a better error checking method.
@@ -153,18 +153,18 @@
 
 						//now take that fancy api data and map it to a common format with datamapper function
 						var weather = datamapper(args, that.settings);
-						
+
 						that._weather = weather; //store it on the instance
 
 						$.data( that.element, "weather", weather); //and store it on the DOM for general use
-						
+
 						promise.resolve(weather, that);
 
 					}
 
 
 		    	})
-				.fail(function(error){  	
+				.fail(function(error){
 					//TODO draw fails.
 					console.log("fail");
 					promise.reject(error, that);
@@ -179,7 +179,7 @@
 					//if called directly and not via plugin we need to set context to this vs passed when a promise
 					context = this;
 				}
-				
+
 					if (error.query.results) {
 						error = "Error: " + error.query.results.channel.item.title + ". See console log for details.";
 					}
@@ -216,24 +216,25 @@
 				var title = $("<h2/>", {"class": "title-4"}).appendTo(pstblockhead);
 				var location='<strong><i class="li_location"></i> '+weather.location+'</strong>';
 				title.append(location);
-				
-				if (context.settings.view != "forecast") {			
+
+				if (context.settings.view != "forecast") {
 					var weatherblock = $("<div/>", {"class": "weather-block"});
 					var temperature = $("<div/>", {"class": "temperature"});
 					$("<i/>", {"class" : weather.today.code}).appendTo(temperature);
 					$("<span/>", {"class" : "degrees-1"}).html(weather.today.temp.now + "<sup>" + degrees + "</sup>").appendTo(temperature);
 					$("<div/>", {"class": "day"}).text(weather.today.day).appendTo(temperature);
 					temperature.appendTo(weatherblock);
-					weatherblock.appendTo(pstblockmain);	
+					weatherblock.appendTo(pstblockmain);
 					var hr = $("<hr/>",{"class": "pst-block-hr"}).appendTo(pstblockmain);
 				}
 
 				if (context.settings.view != "simple") {
 						var detail = $("<ul/>");
-						$("<li/>").html("Humedad " + weather.today.humidity + "%").appendTo(detail);
-						$("<li/>").html("Viento " + formatWind(weather.today.wind.speed, weather.today.wind.deg, context.settings.units)).appendTo(detail);
-						$("<li/>").html("H " + weather.today.temp.max + "<sup>" + degrees + "</sup>" + " L " + weather.today.temp.min + "<sup>" + degrees + "</sup>").appendTo(detail);
-						
+						var details = getDetailString(context.settings.language);
+						$("<li/>").html(details.humidity + " " + weather.today.humidity + "%").appendTo(detail);
+						$("<li/>").html(details.wind + " " + formatWind(weather.today.wind.speed, weather.today.wind.deg, context.settings.units)).appendTo(detail);
+						$("<li/>").html("H " + weather.today.temp.max + "<sup>" + degrees + "</sup>" + "    L " + weather.today.temp.min + "<sup>" + degrees + "</sup>").appendTo(detail);
+
 						detail.appendTo(weatherblock);
 
 
@@ -245,14 +246,14 @@
 						for (var i = startingIndex; i < weather.forecast.length; i++) {
 							var day = $("<li/>").appendTo(weatherdayslist);
 							$("<span/>", {"class": "degrees-2"}).html(weather.forecast[i].temp.max + "<i class='degrees-ic-2'></i>").appendTo(day);
-							$("<div/>", {"class" : "day"}).html(weather.forecast[i].day).appendTo(day);						
+							$("<div/>", {"class" : "day"}).html(weather.forecast[i].day).appendTo(day);
 						}
 						weatherdayslist.appendTo(weatherdays);
 						weatherdays.appendTo(pstblockmain);
 					}
 				}
 
- 
+
 				//now append our dom fragment to the target element
 				$(context.element).html(widget); //recall that this.element is set in plugin constructor
 
@@ -261,7 +262,7 @@
 			}
 
 		});
- 
+
 
 		//jQuery Constructor
 		// A lightweight plugin wrapper on the jquery fn constructor,
@@ -270,7 +271,7 @@
 			if ($.isFunction(Plugin.prototype[options])) {
 				//enable function access via .flatWeatherPlugin('function', 'args')
 				//grab the plugin instance from the dom reference and call function with any args
-				//return the results of the  
+				//return the results of the
 				return this.data("plugin_" + pluginName)[options](args);
 			}
 			//return this for jquery chainability
@@ -286,7 +287,7 @@
 		function datamapper (input, settings) {
 
 			var out = {}; //map input to out
-			
+
 				//key = yahoo code, value = standard code (based on openweathermap codes)
 				var codes = {
 					0  : "900",	//tornado
@@ -341,7 +342,7 @@
 				}
 
 				input = input.query.results.channel; //get rid of a bunch of silly yahoo nested objects;
-				
+
 				out.location =  input.location.city + ", " + input.location.country;
 				out.city = input.location.city;
 
@@ -362,13 +363,13 @@
 				out.today.sunrise = input.astronomy.sunrise.toUpperCase();
 				out.today.sunset = input.astronomy.sunset.toUpperCase();
 
-				out.today.day = getDayString(new Date());
-				
+				out.today.day = getDayString(new Date(),settings.language);
+
 				out.forecast = [];
 				//grab only the number of forecast days desired from settings
 				for (var i = 0; i <= settings.forecast ; i++) {
 					var forecast = {};
-					forecast.day = getDayString(new Date(input.item.forecast[i].date));
+					forecast.day = getDayString(new Date(input.item.forecast[i].date),settings.language);
 					forecast.code = codes[input.item.forecast[i].code]; //map weather code
 					forecast.desc = input.item.forecast[i].text.capitalize();
 					forecast.temp = {max: Math.round(input.item.forecast[i].high), min: Math.round(input.item.forecast[i].low)}
@@ -385,10 +386,54 @@
 		};
 
 		//take a date object and return a day string
-		function getDayString(date) {
-		  return ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][date.getDay()];
+		function getDayString(date,language) {
+			switch (language) {
+	      case "español":
+	      	return ['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'][date.getDay()];
+	      	break;
+	      case "italiano":
+	      	return ['Domenica','Lunedi','Martedi','Mercoledi','Giovedi','Venerdi','Sabato'][date.getDay()];
+	      	break;
+	      case 'français':
+      		return ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'][date.getDay()];
+	      	break;
+      	case 'deutsch':
+      		return ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'][date.getDay()];
+	      	break;
+      	default:
+      		return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][date.getDay()];
+      }
 		};
-
+		//take a date object and return a day string
+		function getDetailString(language) {
+			var detail = {};
+			switch (language) {
+	      case "español":
+					detail.humidity= "Humedad";
+					detail.wind = "Viento";
+	      	return detail;
+	      	break;
+	      case "italiano":
+					detail.humidity= "Umidità";
+					detail.wind = "Vento";
+					return detail;
+	      	break;
+	      case 'français':
+					detail.humidity= "Humidité";
+					detail.wind = "Vent";
+					return detail;
+	      	break;
+      	case 'deutsch':
+				detail.humidity= "Nässe";
+				detail.wind = "Wind";
+				return detail;
+	      	break;
+      	default:
+				detail.humidity= "Humidity";
+				detail.wind = "Wind";
+				return detail;
+      }
+		};
 		//converts and epoch time in seconds to hours in the day
 		function epochToHours(date) {
 		  date = new Date(date * 1000);
@@ -402,7 +447,7 @@
 		  return strTime;
 		};
 
-		//Takes wind speed, direction in degrees and units 
+		//Takes wind speed, direction in degrees and units
 		//and returns a string ex. (8.5, 270, "metric") returns "W 8.5 km/h"
 		function formatWind(speed, degrees, units) {
 			var wd = degrees;

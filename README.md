@@ -64,6 +64,7 @@ JWeather provides some options that allow customization of the plugin's function
 | `forecast`       | `0-5`                              | `5`                       | how many days you want forecast |
 | `render`         | `true` or `false`                  | `true`                    | if you want plugin to generate markup |
 | `units`          | `metric` or `imperial`             | `metric`                  | force metric units |
+| `language`       | `español`,`italiano`,`français`,`deutsch`,`english`| `english` | change the language |
 
 Example usage:
 
@@ -75,6 +76,7 @@ $(document).ready(function() {
   forecast: 4, //default: 5 (0 -5) how many days you want forecast
   render: true, //default: true (true/false) if you want plugin to generate markup
   units : "metric",
+  language : "español",
   });
 });
 ```
