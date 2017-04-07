@@ -21,10 +21,10 @@ As you can see in the example files, you will need to include:
 Terminal:
 ```shell
 // With bower
-bower install jweather.js
+bower install JWeather
 
 // With npm
-npm install jweather.js
+npm install JWeather
 ```
 
 ### Including files:
