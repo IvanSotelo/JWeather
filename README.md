@@ -24,7 +24,7 @@ Terminal:
 bower install JWeather
 
 // With npm
-npm install JWeather
+npm install jweather
 ```
 
 ### Including files:
